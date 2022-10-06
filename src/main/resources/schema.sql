@@ -1,0 +1,6 @@
+CREATE TABLE Ordenador (
+    id INT AUTO_INCREMENT,
+    marca VARCHAR(255) NOT NULL,
+    modelo VARCHAR(255) NOT NULL,
+    dueno VARCHAR(255) NOT NULL
+);
