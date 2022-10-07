@@ -1,21 +1,3 @@
 spring:
-  datasource:
-    username: sa
-    url: jdbc:h2:mem:lesson4db
-    driverClassName: org.h2.Driver
-    password: ''
-  jpa:
-    defer-datasource-initialization: 'true'
-    show-sql: 'true'
-    hibernate:
-      ddl-auto: update
-  # This issue is caused by Spring Fox 3.0.0 not supporting new PathPattern Based Path Matching Strategy for Spring MVC which is now the new default from spring-boot 2.6.0.
-  mvc:
-    pathmatch:
-      matching-strategy: ant_path_matcher
-
-server:
-  error:
-    include-message: never
-    include-stacktrace: never
-
+  profiles:
+    active: "dev"

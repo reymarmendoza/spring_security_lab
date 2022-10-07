@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.test.web.server.LocalServerPort;
@@ -29,10 +30,15 @@ class LaptopControllerTest {
 	@LocalServerPort
 	private int port;
 	
+	@Value("${keys.user}") private String USER;
+	@Value("${keys.password}") private String PASS;
+	
 	@BeforeEach
 	void setUp() {
 		restTemplateBuilder = restTemplateBuilder.rootUri("http://localhost:" + port);
-		testRestTemplate = new TestRestTemplate(restTemplateBuilder);
+		testRestTemplate =
+				new TestRestTemplate(restTemplateBuilder)
+						.withBasicAuth(USER, PASS);
 	}
 	
 	@DisplayName("Obtener todos los laptos")
